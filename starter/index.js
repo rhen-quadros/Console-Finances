@@ -87,6 +87,7 @@ var finances = [
   ["Feb-2017", 671099],
 ];
 
+// The total number of months included in the dataset.
 var uniqueMonths = {};
 for (var i = 0; i < finances.length; i++) {
   var month = finances[i][0];
@@ -94,3 +95,16 @@ for (var i = 0; i < finances.length; i++) {
 }
 var numberOfMonths = Object.keys(uniqueMonths).length;
 console.log("Number of months:", numberOfMonths);
+
+// The net total amount of Profit/Losses over the entire period.
+// Initialize a variable to store the total profit or loss
+var totalProfitOrLoss = 0;
+
+// Iterate through the finances array
+for (var i = 0; i < finances.length; i++) {
+  // Add the profit or loss from each month to the total
+  totalProfitOrLoss += finances[i][1];
+}
+
+// Print the result to the console
+console.log("Total Profit or Loss:", totalProfitOrLoss);
