@@ -97,14 +97,23 @@ var numberOfMonths = Object.keys(uniqueMonths).length;
 console.log("Number of months:", numberOfMonths);
 
 // The net total amount of Profit/Losses over the entire period.
-// Initialize a variable to store the total profit or loss
 var totalProfitOrLoss = 0;
-
-// Iterate through the finances array
 for (var i = 0; i < finances.length; i++) {
-  // Add the profit or loss from each month to the total
   totalProfitOrLoss += finances[i][1];
 }
-
-// Print the result to the console
 console.log("Total Profit or Loss:", totalProfitOrLoss);
+
+// The average of the changes in Profit/Losses over the entire period.
+var totalChange = 0;
+var previousMonthProfitOrLoss = finances[0][1];
+for (var i = 1; i < finances.length; i++) {
+  var currentMonthProfitOrLoss = finances[i][1];
+  var change = currentMonthProfitOrLoss - previousMonthProfitOrLoss;
+  totalChange += change;
+  previousMonthProfitOrLoss = currentMonthProfitOrLoss;
+}
+
+var numberOfMonths = finances.length;
+var averageChange = totalChange / (numberOfMonths - 1);
+
+console.log("Average Change in Profit/Losses:", averageChange);
