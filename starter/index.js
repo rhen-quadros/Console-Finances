@@ -117,3 +117,39 @@ var numberOfMonths = finances.length;
 var averageChange = totalChange / (numberOfMonths - 1);
 
 console.log("Average Change in Profit/Losses:", averageChange);
+
+// The greatest increase in Profit/Losses (date and difference in the amounts) over the entire period.
+var greatestIncrease = {
+  date: "",
+  amount: 0,
+};
+for (var i = 1; i < finances.length; i++) {
+  var currentDate = finances[i][0];
+  var currentMonthProfitOrLoss = finances[i][1];
+  var previousMonthProfitOrLoss = finances[i - 1][1];
+  var difference = currentMonthProfitOrLoss - previousMonthProfitOrLoss;
+  if (difference > greatestIncrease.amount) {
+    greatestIncrease.date = currentDate;
+    greatestIncrease.amount = difference;
+  }
+}
+
+console.log("Greatest Increase in Profit/Losses:", greatestIncrease);
+
+// The greatest decrease in Profit/Losses (date and difference in the amounts) over the entire period.
+var greatestDecrease = {
+  date: "",
+  amount: 0,
+};
+for (var i = 1; i < finances.length; i++) {
+  var currentDate = finances[i][0];
+  var currentMonthProfitOrLoss = finances[i][1];
+  var previousMonthProfitOrLoss = finances[i - 1][1];
+  var difference = currentMonthProfitOrLoss - previousMonthProfitOrLoss;
+  if (difference < greatestDecrease.amount) {
+    greatestDecrease.date = currentDate;
+    greatestDecrease.amount = difference;
+  }
+}
+
+console.log("Greatest Increase in Profit/Losses:", greatestDecrease);
